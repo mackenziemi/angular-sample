@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h3>Projects Portfolio</h3>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 container">
+      <div
+        class="loading-bar"
+        *ngIf="Items.length === 0">
+        <div
+          class="loading-bar-element"
+          *ngIf="progress != 'finished'"></div>
+      </div>
+      <app-project
+        *ngFor="let p of Items; let i = index"
+        [model]="p"
+        [ngClass]="{marked: markedPrjIndex === i, inactive: p.status === 'inactive' }"
+        (statusUpdated)="onStatusUpdated($event, i)"
+        (projectDeleted)="onProjectDeleted(i)"
+        (click)="markedPrjIndex = i"></app-project>
+    </div>
+  </div>

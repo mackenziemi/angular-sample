@@ -1,0 +1,19 @@
+
+ <h3>
+  {{Name}}
+  <!-- Show different usages of ngClass and ngStyle"-->
+  <span
+    class="float-right alert"
+      [ngClass]="getPrjStatusClass()">{{Status}}
+</span>
+</h3>
+<br>
+<hr>
+<p>{{Description}}</p>
+<select #prjStatus class="form-control">
+<option value="active" [selected]="Status === 'active'">Active</option>
+<option value="inactive" [selected]="Status === 'inactive'">Inactive</option>
+<option value="critical" [selected]="Status === 'critical'">Critical</option>
+</select>
+<button class="btn btn-primary" (click)="onUpdateStatus(prjStatus.value)">Update Status</button>
+<button class="btn btn-danger" (click)="onDelete()">Delete Project</button>
